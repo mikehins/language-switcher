@@ -7,7 +7,7 @@ composer require mikehins/language-switcher
 
 This command will add / remove a language switcher menu item in the main nav bar.
 
-####Important
+###Important
 Be sure that run ```php artisan make:auth``` and ```php artisan migrate``` before to run the command  
 
 To add the language switcher
@@ -20,11 +20,14 @@ To revert the changes
 php artisan languageswitcher:delete
 ```
 
-This is what the command ```languageswitcher:add``` does
-1. Add a ```default_language``` field in your users table
-2. Add the markup to the ```layouts/app.blade.php``` file
-3. Add a route in the ```routes/web.php``` file
-4. Add a Middleware inside ```app\Http\Middleware```
-5. Add the middleware to the ```app\Http\Kernel.php```
-6. Add a LanguageController in the ```app\Http\Controllers``` directory
-7. Add a language file to the config directory ```config/lanbguages.php```
+This is what the command ```languageswitcher:add``` does :
+- Add a ```default_language``` field in your users table
+- Add the markup to the ```layouts/app.blade.php``` file
+- Add a route in the ```routes/web.php``` file
+- Add a Middleware inside ```app\Http\Middleware```
+- Add the middleware to the ```app\Http\Kernel.php```
+- Add a LanguageController in the ```app\Http\Controllers``` directory
+- Add a language file to the config directory ```config/lanbguages.php```
+
+When the user switch the language, it will automatically update the ```default_language``` field from the users table.
+The next time the user logs in, the language session will automatically be set by the middleware using the ```auth()->user()->default_language``` variable.
