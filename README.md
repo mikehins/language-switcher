@@ -7,7 +7,7 @@ composer require mikehins/language-switcher
 
 This command will add / remove a language switcher menu item in the main nav bar.
 
-###Important
+#### Important
 Be sure that run ```php artisan make:auth``` and ```php artisan migrate``` before to run the command  
 
 To add the language switcher
