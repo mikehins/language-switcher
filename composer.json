@@ -1,0 +1,26 @@
+{
+    "name": "mikehins/language-switcher",
+    "description": "Generate a language switcher link in the main nav bar",
+    "type": "plugin",
+    "license": "DBAD",
+    "authors": [
+        {
+            "name": "Mike Hins",
+            "email": "me@mikehins.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "mikehins\\language-switcher\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "mikehins\\languageswitcher\\LanguageSwitcherServiceProvider"
+            ]
+        }
+    }
+}
