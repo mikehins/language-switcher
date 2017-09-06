@@ -2,7 +2,7 @@
 Create a language switcher for your Laravel 5.5 app straight from the command line
 
 ```javascript
-composer require --dev mikehins/language-switcher
+composer require mikehins/language-switcher
 ```
 
 This command will add / remove a language switcher menu item in the main nav bar.
