@@ -1,0 +1,9 @@
+    /*
+     * Use the user's prefered language if it exists
+     *
+     * @return void
+     * */
+    protected function authenticated(\Request $request, $user)
+	{
+		session()->put('locale', auth()->user()->default_language ?: config('app.locale'));
+	}
