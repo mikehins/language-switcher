@@ -13,7 +13,7 @@ class DeleteLanguageSwitcherCommand extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'languageswitcher:delete';
+	protected $signature = 'switch:delete';
 	
 	/**
 	 * The console command description.

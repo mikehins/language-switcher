@@ -13,7 +13,7 @@ class AddLanguageSwitcherCommand extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'languageswitcher:add';
+	protected $signature = 'switch:add';
 	
 	/**
 	 * The console command description.
@@ -52,8 +52,6 @@ class AddLanguageSwitcherCommand extends Command
 	 */
 	public function handle()
 	{
-		
-		
 		if (!Schema::hasTable($this->table)) {
 			$this->info('You must migrate the users table first php artisan migrate');
 			die;
