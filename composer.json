@@ -2,14 +2,14 @@
   "name": "mikehins/language-switcher",
   "description": "Create a language switcher for your Laravel 5.5 app, straight from the command line",
   "type": "plugin",
-  "license": "DBAD",
+  "license": "MIT",
+  "version": "1.0",
   "authors": [
     {
       "name": "Mike Hins",
       "email": "me@mikehins.com"
     }
   ],
-  "prefer-stable": true,
   "minimum-stability": "dev",
   "require": {},
   "autoload": {
