@@ -1,0 +1,13 @@
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ config('languages')[app()->getLocale()] }} <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach (config('languages') as $lang => $language)
+                                    @if ($lang !== app()->getLocale())
+                                        <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </li>
