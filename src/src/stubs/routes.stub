@@ -1,1 +1,0 @@
-Route::get('lang/{lang}', 'LanguageController@switchLang')->name('lang.switch');

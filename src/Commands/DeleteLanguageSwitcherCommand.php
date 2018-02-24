@@ -15,7 +15,6 @@ class DeleteLanguageSwitcherCommand extends Command
 	 */
 	protected $signature = 'switch:delete';
 	
-	protected $version;
 	/**
 	 * The console command description.
 	 *
@@ -35,10 +34,6 @@ class DeleteLanguageSwitcherCommand extends Command
 	public function __construct()
 	{
 		parent::__construct();
-		
-		$laravel = app();
-		$version = explode('.', $laravel::VERSION);
-		$this->version = $version[0] . '.' . $version[1];
 		
 		$this->user = config('auth.providers.users.model');
 		
@@ -73,21 +68,12 @@ class DeleteLanguageSwitcherCommand extends Command
 			});
 		}
 		
-		
-		$this->remove(array_first(config('view.paths')) . '/layouts/app.blade.php', $this->getStubByVersion());
+		$this->remove(array_first(config('view.paths')) . '/layouts/app.blade.php', 'switcher.stub');
 		$this->remove(base_path('routes/web.php'), 'routes.stub');
 		$this->remove(app_path('Http/Kernel.php'), 'Kernel.stub');
+		$this->remove(app_path('Http/Controllers/Auth/LoginController.php'), 'LoginController.stub');
 		
 		$this->info('The language switcher has been removed');
-	}
-	
-	protected function getStubByVersion()
-	{
-		$stubs = [
-			'5.6' => 'switcher.5.6.0.stub',
-		];
-		
-		return $stubs[$this->version] ?: 'switcher.stub';
 	}
 	
 	protected function remove($file, $stub)

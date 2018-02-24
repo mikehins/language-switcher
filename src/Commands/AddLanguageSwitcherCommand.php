@@ -4,12 +4,10 @@ namespace mikehins\languageswitcher\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 
 class AddLanguageSwitcherCommand extends Command
 {
-	protected $version;
 	/**
 	 * The name and signature of the console command.
 	 *
@@ -36,9 +34,6 @@ class AddLanguageSwitcherCommand extends Command
 	public function __construct()
 	{
 		parent::__construct();
-		
-		$laravel = app();
-		$this->version = $laravel::VERSION;
 		
 		$this->user = config('auth.providers.users.model');
 		
@@ -68,6 +63,7 @@ class AddLanguageSwitcherCommand extends Command
 			->addToMiddleware()
 			->addController()
 			->addConfig()
+			->addToLoginController()
 			->addMiddleware();
 	}
 	
@@ -90,18 +86,11 @@ class AddLanguageSwitcherCommand extends Command
 	protected function addMenuItemToNavigation()
 	{
 		$view = array_first(config('view.paths')) . '/layouts/app.blade.php';
+		$stub = file_get_contents(__DIR__ . '/../stubs/switcher.stub');
 		$file = file_get_contents($view);
 		
-		
 		if (strpos("config('languages')", $file) === false) {
-			if (strpos($this->version, '5.6') !== false) {
-				$stub = file_get_contents(__DIR__ . '/../stubs/switcher.5.6.0.stub');
-				$file = str_replace('<ul class="navbar-nav ml-auto">', '<ul class="navbar-nav ml-auto">' . $stub, $file);
-			} else {
-				$stub = file_get_contents(__DIR__ . '/../stubs/switcher.stub');
-				$file = str_replace('<ul class="nav navbar-nav navbar-right">', '<ul class="nav navbar-nav navbar-right">' . $stub, $file);
-			}
-			
+			$file = str_replace('<ul class="nav navbar-nav navbar-right">', '<ul class="nav navbar-nav navbar-right">' . $stub, $file);
 			$this->info('The switcher has been added to the navbar');
 			file_put_contents($view, $file);
 			
@@ -127,6 +116,23 @@ class AddLanguageSwitcherCommand extends Command
 		}
 		
 		$this->info('The route already exists');
+		return $this;
+	}
+	
+	protected function addToLoginController()
+	{
+		$controller = app_path('Http/Controllers/Auth/LoginController.php');
+		$file = file_get_contents($controller);
+		$stub = file_get_contents(__DIR__ . '/../stubs/LoginController.stub');
+		
+		if (strpos($file, $stub) === false) {
+			file_put_contents($controller, rtrim(trim($file), '}') . $stub . '}');
+			$this->info('The LoginController has been modified');
+			
+			return $this;
+		}
+		
+		$this->info('The LoginController already exists');
 		return $this;
 	}
 	
