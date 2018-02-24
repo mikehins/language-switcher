@@ -1,5 +1,5 @@
 # language-switcher
-Create a language switcher for your Laravel 5.5 app straight from the command line
+Create a language switcher for your Laravel 5.5+ app straight from the command line
 
 ```javascript
 composer require mikehins/language-switcher
