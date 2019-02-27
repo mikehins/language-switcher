@@ -98,7 +98,7 @@ class AddLanguageSwitcherCommand extends Command
 			return $this;
 		}
 		
-		if (preg_match('/^5\.[6|7]/', app()->version(), $match)) {
+		if (preg_match('/^5\.[6|7|8]/', app()->version(), $match)) {
 			$stub = file_get_contents(__DIR__ . '/../stubs/switcher.5.6.0.stub');
 			$file = str_replace('<ul class="navbar-nav ml-auto">', '<ul class="navbar-nav ml-auto">' . $stub, $file);
 		}else {
