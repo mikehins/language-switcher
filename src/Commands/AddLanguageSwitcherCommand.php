@@ -89,20 +89,33 @@ class AddLanguageSwitcherCommand extends Command
 	
 	protected function addMenuItemToNavigation()
 	{
+<<<<<<< HEAD
 		$paths = config('view.paths');
 		$view = $paths[0] . '/layouts/app.blade.php';
 		$file = file_get_contents($view);
 
+=======
+		$view = array_first(config('view.paths')) . '/layouts/app.blade.php';
+		$file = file_get_contents($view);
+		
+>>>>>>> ed1738f7dd3e2c46d54cf7fea7cc2712a6a20403
 		if (strpos("config('languages')", $file) !== false) {
 			$this->info('The switcher was already in the navbar');
 			
 			return $this;
 		}
 		
+<<<<<<< HEAD
 		if ((float)app()->version() > 5.6) {
 			$stub = file_get_contents(__DIR__ . '/../stubs/switcher.5.6.0.stub');
 			$file = str_replace('<ul class="navbar-nav ml-auto">', '<ul class="navbar-nav ml-auto">' . $stub, $file);
 		} else {
+=======
+		if (preg_match('/^5\.[6|7|8]/', app()->version(), $match)) {
+			$stub = file_get_contents(__DIR__ . '/../stubs/switcher.5.6.0.stub');
+			$file = str_replace('<ul class="navbar-nav ml-auto">', '<ul class="navbar-nav ml-auto">' . $stub, $file);
+		}else {
+>>>>>>> ed1738f7dd3e2c46d54cf7fea7cc2712a6a20403
 			$stub = file_get_contents(__DIR__ . '/../stubs/switcher.stub');
 			$file = str_replace('<ul class="nav navbar-nav navbar-right">', '<ul class="nav navbar-nav navbar-right">' . $stub, $file);
 		}

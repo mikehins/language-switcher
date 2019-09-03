@@ -75,9 +75,15 @@ class DeleteLanguageSwitcherCommand extends Command
 
 		$navMenu = $navMenu = (float)app()->version() > 5.6 ? 'switcher.5.6.0.stub' : 'switcher.stub';
 		
+<<<<<<< HEAD
 		$paths = config('view.paths');
 		$view = $paths[0] . '/layouts/app.blade.php';
 		$this->remove($view, $navMenu);
+=======
+		$navMenu = $navMenu = preg_match('/^5\.[6|7|8]/', app()->version()) ? 'switcher.5.6.0.stub' : 'switcher.stub';
+		
+		$this->remove(array_first(config('view.paths')) . '/layouts/app.blade.php', $navMenu);
+>>>>>>> ed1738f7dd3e2c46d54cf7fea7cc2712a6a20403
 		$this->remove(base_path('routes/web.php'), 'routes.stub');
 		$this->remove(app_path('Http/Kernel.php'), 'Kernel.stub');
 		$this->remove(app_path('Http/Controllers/Auth/LoginController.php'), 'LoginController.stub');
