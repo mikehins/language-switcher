@@ -26,6 +26,8 @@ class DeleteLanguageSwitcherCommand extends Command
 	
 	protected $table;
 	
+	protected $version;
+	
 	/**
 	 * Create a new command instance.
 	 *
@@ -34,6 +36,9 @@ class DeleteLanguageSwitcherCommand extends Command
 	public function __construct()
 	{
 		parent::__construct();
+		
+		$laravel = app();
+		$this->version = $laravel::VERSION;
 		
 		$this->user = config('auth.providers.users.model');
 		
@@ -67,8 +72,12 @@ class DeleteLanguageSwitcherCommand extends Command
 				$table->dropColumn('default_language');
 			});
 		}
+
+		$navMenu = $navMenu = (float)app()->version() > 5.6 ? 'switcher.5.6.0.stub' : 'switcher.stub';
 		
-		$this->remove(array_first(config('view.paths')) . '/layouts/app.blade.php', 'switcher.stub');
+		$paths = config('view.paths');
+		$view = $paths[0] . '/layouts/app.blade.php';
+		$this->remove($view, $navMenu);
 		$this->remove(base_path('routes/web.php'), 'routes.stub');
 		$this->remove(app_path('Http/Kernel.php'), 'Kernel.stub');
 		$this->remove(app_path('Http/Controllers/Auth/LoginController.php'), 'LoginController.stub');
