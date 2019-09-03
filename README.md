@@ -9,8 +9,13 @@ This command will add / remove a language switcher menu item in the main nav bar
 
 ![Alt text](switch.png?raw=true)
 
-#### Important
+#### Important Laravel version 6.0+
+Be sure to run ```composer require laravel/ui``` and ```php artisan ui vue --auth``` before to run the command. You also have to run ```npm install && npm run dev```
+
+#### Important ***before*** Laravel version 6.0
 Be sure to run ```php artisan make:auth``` and ```php artisan migrate``` before to run the command  
+
+---
 
 To add the language switcher
 ```javascript
