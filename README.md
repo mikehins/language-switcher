@@ -1,5 +1,5 @@
-[![Latest Stable Version](https://poser.pugx.org/mikehins/laravel-translatable/v/stable?format=flat-square)](https://packagist.org/packages/mikehins/laravel-translatable)
-[![Total Downloads](https://poser.pugx.org/mikehins/laravel-translatable/downloads)](https://packagist.org/packages/mikehins/laravel-translatable)
+[![Latest Stable Version](https://poser.pugx.org/mikehins/language-switcher/v/stable?format=flat-square)](https://packagist.org/packages/mikehins/language-switcher)
+[![Total Downloads](https://poser.pugx.org/mikehins/language-switcher/downloads)](https://packagist.org/packages/mikehins/language-switcher)
 
 
 # language-switcher
