@@ -1,3 +1,7 @@
+[![Latest Stable Version](https://poser.pugx.org/mikehins/laravel-translatable/v/stable?format=flat-square)](https://packagist.org/packages/mikehins/laravel-translatable)
+[![Total Downloads](https://poser.pugx.org/mikehins/laravel-translatable/downloads)](https://packagist.org/packages/mikehins/laravel-translatable)
+
+
 # language-switcher
 Create a language switcher for your Laravel 5.5+ app straight from the command line
 
