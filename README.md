@@ -2,6 +2,9 @@
 [![Total Downloads](https://poser.pugx.org/mikehins/language-switcher/downloads)](https://packagist.org/packages/mikehins/language-switcher)
 
 
+### Laravel 7 ready
+
+
 # language-switcher
 Create a language switcher for your Laravel 5.5+ app straight from the command line
 
@@ -13,7 +16,7 @@ This command will add / remove a language switcher menu item in the main nav bar
 
 ![Alt text](switch.png?raw=true)
 
-#### Important Laravel version 6.0+
+#### Important Laravel version 6 +
 Be sure to run ```composer require laravel/ui``` and ```php artisan ui vue --auth``` before to run the command. You also have to run ```npm install && npm run dev```
 
 #### Important ***before*** Laravel version 6.0
